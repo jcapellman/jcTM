@@ -1,0 +1,22 @@
+﻿<Page
+    x:Class="jcTM.UWP.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:jcTM.UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    Background="White"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" FontSize="40" Foreground="Black" Text="{Binding Temperature, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <TextBlock Grid.Row="1" FontSize="20" Foreground="Black" Text="{Binding RecordedTime, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <ProgressBar Grid.Row="2" IsIndeterminate="True" Visibility="{Binding ShowProgress, Mode=TwoWay}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+    </Grid>
+</Page>
