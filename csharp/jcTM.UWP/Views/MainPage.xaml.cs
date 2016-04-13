@@ -3,7 +3,7 @@ using Windows.UI.Xaml.Navigation;
 
 using jcTM.UWP.ViewModels;
 
-namespace jcTM.UWP {
+namespace jcTM.UWP.Views {
     public sealed partial class MainPage : Page {
         private MainPageModel viewModel => (MainPageModel) DataContext;
 
@@ -14,6 +14,7 @@ namespace jcTM.UWP {
         }
         
         protected override async void OnNavigatedTo(NavigationEventArgs e) {
+
             while (true) {
                 var result = await viewModel.LoadData();
 
