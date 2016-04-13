@@ -15,5 +15,7 @@ namespace jcTM.WebAPI.DataLayer.Entities
     {
         public double Temperature { get; set; }
         public System.DateTime Modified { get; set; }
+        public Nullable<double> Min { get; set; }
+        public Nullable<double> Max { get; set; }
     }
 }

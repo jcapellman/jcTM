@@ -41,6 +41,8 @@
         <ComplexType Name="WEBAPI_getLatestTemperatureSP_Result">
           <Property Type="Double" Name="Temperature" Nullable="false" />
           <Property Type="DateTime" Name="Modified" Nullable="false" Precision="23" />
+          <Property Type="Double" Name="Min" Nullable="true" />
+          <Property Type="Double" Name="Max" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -64,6 +66,8 @@
               <ComplexTypeMapping TypeName="jctmModel.WEBAPI_getLatestTemperatureSP_Result">
                 <ScalarProperty Name="Temperature" ColumnName="Temperature" />
                 <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="Min" ColumnName="Min" />
+                <ScalarProperty Name="Max" ColumnName="Max" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
