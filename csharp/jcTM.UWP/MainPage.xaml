@@ -4,19 +4,50 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:jcTM.UWP"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    Background="White"
+    Background="#015077"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="using:jcTM.UWP.ViewModels"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Page.DataContext>
+        <viewModels:MainPageModel />
+    </Page.DataContext>
+
+    <Grid Background="#015077" HorizontalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" FontSize="40" Foreground="Black" Text="{Binding Temperature, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" />
-        <TextBlock Grid.Row="1" FontSize="20" Foreground="Black" Text="{Binding RecordedTime, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" />
-        <ProgressBar Grid.Row="2" IsIndeterminate="True" Visibility="{Binding ShowProgress, Mode=TwoWay}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <ProgressBar Grid.Row="0" IsIndeterminate="True" Visibility="{Binding ShowProgress, Mode=TwoWay}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" />
+
+        <Grid Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            
+            <TextBlock Grid.Row="0" FontSize="60" Foreground="White" Text="{Binding Temperature, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <TextBlock Grid.Row="1" FontSize="20" Foreground="#CCCCCC" Text="{Binding RecordedTime, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+            <Grid Grid.Row="2" VerticalAlignment="Center" Margin="0,20,0,0" HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" FontSize="20" Foreground="#CCCCCC" FontWeight="Bold" Margin="0,0,20,0" Text="Low for Today" />
+                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="60" Foreground="White" Margin="0,0,20,0" Text="{Binding LowTemperature, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                <TextBlock Grid.Row="0" Grid.Column="1" FontSize="20" Foreground="#CCCCCC" FontWeight="Bold" Text="High for Today" />
+                <TextBlock Grid.Row="1" Grid.Column="1" FontSize="60" Foreground="White" Text="{Binding HighTemperature, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </Grid>
+        </Grid>
     </Grid>
 </Page>

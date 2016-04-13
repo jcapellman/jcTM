@@ -27,6 +27,14 @@ namespace jcTM.UWP.ViewModels {
             set { _temperature = value; OnPropertyChanged(); }
         }
 
+        private double _lowTemperature;
+
+        public double LowTemperature {  get { return _lowTemperature; } set { _lowTemperature = value; OnPropertyChanged(); } }
+
+        private double _highTemperature;
+
+        public double HighTemperature { get { return _highTemperature; } set { _highTemperature = value; OnPropertyChanged(); } }
+
         private Visibility _showProgress;
 
         public Visibility ShowProgress {
@@ -45,14 +53,16 @@ namespace jcTM.UWP.ViewModels {
         public async Task<bool> LoadData() {
             ShowProgress = Visibility.Visible;
 
-            var result = await GET<LatestTemperatureResponseItem>("Temperature");
+            var result = await GET<DashboardResponseItem>("Temperature");
 
-            if (result == default(LatestTemperatureResponseItem)) {
+            if (result == default(DashboardResponseItem)) {
                 return false;
             }
 
-            RecordedTime = $"As of {result.RecordedTime.AddHours(-4)}";
-            Temperature = $"{Math.Round(result.Temperature, 2)}'F";
+            RecordedTime = $"As of {result.Latest_RecordedTime.AddHours(-4)}";
+            Temperature = $"{Math.Round(result.Latest_Temperature, 2)}'F";
+            HighTemperature = result.CurrentDay_HighTemperature;
+            LowTemperature = result.CurrentDay_LowTemperature;
 
             ShowProgress = Visibility.Collapsed;
             
