@@ -69,6 +69,12 @@
     <Compile Include="Entities\Temperature.cs">
       <DependentUpon>EFModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\WEBAPI_getDayOverviewDetailSP_Result.cs">
+      <DependentUpon>EFModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WEBAPI_getDayOverviewListingSP_Result.cs">
+      <DependentUpon>EFModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\WEBAPI_getLatestTemperatureSP_Result.cs">
       <DependentUpon>EFModel.tt</DependentUpon>
     </Compile>

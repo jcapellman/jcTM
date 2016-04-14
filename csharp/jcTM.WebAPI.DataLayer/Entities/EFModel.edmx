@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="jctmModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="jctmModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Temperatures">
           <Key>
             <PropertyRef Name="ID" />
@@ -15,12 +15,15 @@
           <Property Name="Active" Type="bit" Nullable="false" />
           <Property Name="Temperature" Type="float" Nullable="false" />
         </EntityType>
+        <Function Name="WEBAPI_getDayOverviewDetailSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SelectedDay" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="WEBAPI_getDayOverviewListingSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="WEBAPI_getLatestTemperatureSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="jctmModelStoreContainer">
           <EntitySet Name="Temperatures" EntityType="Self.Temperatures" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="jctmModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -37,12 +40,26 @@
         <EntityContainer Name="jctmEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Temperatures" EntityType="Self.Temperature" />
           <FunctionImport Name="WEBAPI_getLatestTemperatureSP" ReturnType="Collection(jctmModel.WEBAPI_getLatestTemperatureSP_Result)" />
+          <FunctionImport Name="WEBAPI_getDayOverviewListingSP" ReturnType="Collection(jctmModel.WEBAPI_getDayOverviewListingSP_Result)" />
+          <FunctionImport Name="WEBAPI_getDayOverviewDetailSP" ReturnType="Collection(jctmModel.WEBAPI_getDayOverviewDetailSP_Result)">
+            <Parameter Name="SelectedDay" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="WEBAPI_getLatestTemperatureSP_Result">
           <Property Type="Double" Name="Temperature" Nullable="false" />
           <Property Type="DateTime" Name="Modified" Nullable="false" Precision="23" />
           <Property Type="Double" Name="Min" Nullable="true" />
           <Property Type="Double" Name="Max" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="WEBAPI_getDayOverviewListingSP_Result">
+          <Property Type="DateTime" Name="Day" Nullable="false" Precision="23" />
+          <Property Type="Double" Name="LowTemp" Nullable="false" />
+          <Property Type="Double" Name="HighTemp" Nullable="false" />
+          <Property Type="Double" Name="AverageTemp" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="WEBAPI_getDayOverviewDetailSP_Result">
+          <Property Type="Int32" Name="HourPart" Nullable="true" />
+          <Property Type="Double" Name="AvgTemp" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -68,6 +85,24 @@
                 <ScalarProperty Name="Modified" ColumnName="Modified" />
                 <ScalarProperty Name="Min" ColumnName="Min" />
                 <ScalarProperty Name="Max" ColumnName="Max" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="WEBAPI_getDayOverviewListingSP" FunctionName="jctmModel.Store.WEBAPI_getDayOverviewListingSP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="jctmModel.WEBAPI_getDayOverviewListingSP_Result">
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="LowTemp" ColumnName="LowTemp" />
+                <ScalarProperty Name="HighTemp" ColumnName="HighTemp" />
+                <ScalarProperty Name="AverageTemp" ColumnName="AverageTemp" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="WEBAPI_getDayOverviewDetailSP" FunctionName="jctmModel.Store.WEBAPI_getDayOverviewDetailSP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="jctmModel.WEBAPI_getDayOverviewDetailSP_Result">
+                <ScalarProperty Name="HourPart" ColumnName="HourPart" />
+                <ScalarProperty Name="AvgTemp" ColumnName="AvgTemp" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

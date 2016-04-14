@@ -7,10 +7,10 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"      
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:views1="using:jcTM.UWP.Views"
-      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+      Background="#015077"
       mc:Ignorable="d">
 
-    <Controls:HamburgerMenu x:Name="MyHamburgerMenu">
+    <Controls:HamburgerMenu x:Name="MyHamburgerMenu" NavAreaBackground="Black" HamburgerBackground="#015077" SecondarySeparator="White" HamburgerForeground="White" Background="#015077">
         <Controls:HamburgerMenu.PrimaryButtons>
             <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views1:MainPage">
                 <StackPanel Orientation="Horizontal">

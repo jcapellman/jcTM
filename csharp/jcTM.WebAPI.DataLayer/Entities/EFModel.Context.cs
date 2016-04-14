@@ -33,5 +33,19 @@ namespace jcTM.WebAPI.DataLayer.Entities
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WEBAPI_getLatestTemperatureSP_Result>("WEBAPI_getLatestTemperatureSP");
         }
+    
+        public virtual ObjectResult<WEBAPI_getDayOverviewListingSP_Result> WEBAPI_getDayOverviewListingSP()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WEBAPI_getDayOverviewListingSP_Result>("WEBAPI_getDayOverviewListingSP");
+        }
+    
+        public virtual ObjectResult<WEBAPI_getDayOverviewDetailSP_Result> WEBAPI_getDayOverviewDetailSP(Nullable<System.DateTime> selectedDay)
+        {
+            var selectedDayParameter = selectedDay.HasValue ?
+                new ObjectParameter("SelectedDay", selectedDay) :
+                new ObjectParameter("SelectedDay", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WEBAPI_getDayOverviewDetailSP_Result>("WEBAPI_getDayOverviewDetailSP", selectedDayParameter);
+        }
     }
 }
