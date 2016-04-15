@@ -17,4 +17,18 @@
         <Setter Property="Background" Value="#015077" />
         <Setter Property="HorizontalAlignment" Value="Center" />
     </Style>
+    
+    <Style TargetType="Grid" x:Key="SubMainContainer">
+        <Setter Property="Background" Value="#015077" />
+    </Style>
+    
+    <Style TargetType="TextBlock" x:Key="DayOverviewReportItem">
+        <Setter Property="Foreground" Value="#CCCCCC" />
+        <Setter Property="Margin" Value="0,0,10,0" />
+    </Style>
+    
+     <Style TargetType="TextBlock" x:Key="DayOverviewReportItemMain">
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Margin" Value="0,0,10,0" />
+    </Style>
 </ResourceDictionary>

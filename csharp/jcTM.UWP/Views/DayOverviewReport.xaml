@@ -19,16 +19,19 @@
         <viewModels:DayOverviewReportModel />
     </Page.DataContext>
     
-    <Grid Background="#015077">
+    <Grid Style="{StaticResource SubMainContainer}">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         
-        <TextBlock Grid.Row="0" Margin="10,10,10,10" HorizontalAlignment="Left" FontSize="25" Text="Day Overview Report" Foreground="White" FontWeight="Bold" />
+        <ProgressBar Grid.Row="0" IsIndeterminate="True" Visibility="{Binding ShowProgress, Mode=TwoWay}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" />
 
-        <Charting:Chart Grid.Row="1" Visibility="{Binding GraphVisibility, Mode=TwoWay}" HorizontalAlignment="Stretch">
+        <TextBlock Grid.Row="1" Margin="10,10,10,10" HorizontalAlignment="Left" FontSize="25" Text="Day Overview Report" Foreground="White" FontWeight="Bold" />
+
+        <Charting:Chart Grid.Row="2" Visibility="{Binding GraphVisibility, Mode=TwoWay}" HorizontalAlignment="Stretch">
             <Charting:Chart.LegendStyle>
                 <Style TargetType="dataVisualization:Legend">
                     <Setter Property="Width" Value="0" />
@@ -38,7 +41,7 @@
             <Charting:LineSeries ItemsSource="{Binding DetailGraphItems}"  IndependentValuePath="Hour" DependentValuePath="AvgTemp" IsSelectionEnabled="True" />
         </Charting:Chart>
 
-        <ListView Grid.Row="2" ItemsSource="{Binding ListingItems}" SelectedItem="{Binding SelectedListItem, Mode=TwoWay}" SelectionChanged="lstItems_SelectionChanged">
+        <ListView Grid.Row="2" ItemsSource="{Binding ListingItems}" IsEnabled="{Binding EnableListView, Mode=TwoWay}" SelectedItem="{Binding SelectedListItem, Mode=TwoWay}" SelectionChanged="lstItems_SelectionChanged">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -55,10 +58,10 @@
                             <ColumnDefinition Width="1*" />
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Column="0" Text="Day" Foreground="White" />
-                        <TextBlock Grid.Column="1" Text="Avg" Margin="10,0,10,0" Foreground="#CCCCCC" />
-                        <TextBlock Grid.Column="2" Text="Low" Margin="0,0,10,0" Foreground="#CCCCCC" />
-                        <TextBlock Grid.Column="3" Text="High" Margin="0,0,10,0" Foreground="#CCCCCC" />
+                        <TextBlock Grid.Column="0" Text="Day" Style="{StaticResource DayOverviewReportItemMain}" />
+                        <TextBlock Grid.Column="1" Text="Avg" Style="{StaticResource DayOverviewReportItem}" />
+                        <TextBlock Grid.Column="2" Text="Low" Style="{StaticResource DayOverviewReportItem}" />
+                        <TextBlock Grid.Column="3" Text="High" Style="{StaticResource DayOverviewReportItem}" />
                     </Grid>
                 </DataTemplate>
             </ListView.HeaderTemplate>
@@ -73,10 +76,10 @@
                             <ColumnDefinition Width="1*" />
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Column="0" Text="{Binding Day, Converter={StaticResource DateTimeToDateConverter}}" Foreground="White" />
-                        <TextBlock Grid.Column="1" Text="{Binding AvgTemp}" Margin="10,0,10,0" Foreground="#CCCCCC" />
-                        <TextBlock Grid.Column="2" Text="{Binding MinTemp}" Margin="0,0,10,0" Foreground="#CCCCCC" />
-                        <TextBlock Grid.Column="3" Text="{Binding MaxTemp}" Margin="0,0,10,0" Foreground="#CCCCCC" />
+                        <TextBlock Grid.Column="0" Text="{Binding Day, Converter={StaticResource DateTimeToDateConverter}}" Style="{StaticResource DayOverviewReportItemMain}" />
+                        <TextBlock Grid.Column="1" Text="{Binding AvgTemp}" Style="{StaticResource DayOverviewReportItem}" />
+                        <TextBlock Grid.Column="2" Text="{Binding MinTemp}" Style="{StaticResource DayOverviewReportItem}" />
+                        <TextBlock Grid.Column="3" Text="{Binding MaxTemp}" Style="{StaticResource DayOverviewReportItem}" />
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

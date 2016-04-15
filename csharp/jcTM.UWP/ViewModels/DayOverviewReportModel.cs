@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
 using Windows.UI.Xaml;
@@ -9,6 +7,19 @@ using jcTM.PCL.Transports;
 
 namespace jcTM.UWP.ViewModels {
     public class DayOverviewReportModel : BaseModel {
+        private Visibility _showProgress;
+
+        public Visibility ShowProgress {
+            get { return _showProgress; }
+            set { _showProgress = value; OnPropertyChanged(); }
+        }
+
+        private bool _enableListView;
+
+        public bool EnableListView {
+            get { return _enableListView; } set { _enableListView = value; OnPropertyChanged(); }
+        }
+
         private DayOverviewListingResponseItem _selectedListItem;
 
         public DayOverviewListingResponseItem SelectedListItem {
@@ -23,9 +34,13 @@ namespace jcTM.UWP.ViewModels {
         }
 
         public async Task<bool> LoadData() {
+            EnableListView = false;
+
             GraphVisibility = Visibility.Collapsed;
 
             ListingItems = await GET<List<DayOverviewListingResponseItem>>("DayOverviewReport");
+
+            EnableListView = true;
 
             return true;
         }
@@ -43,12 +58,15 @@ namespace jcTM.UWP.ViewModels {
         }
 
         public async Task<bool> LoadGraphData() {
+            EnableListView = false;
+
             var dateTime = $"{SelectedListItem.Day.Month}/{SelectedListItem.Day.Day}/{SelectedListItem.Day.Year}";
 
             DetailGraphItems = await GET<List<DayOverviewDetailResponseItem>>($"DayOverviewReport?selectedDay={dateTime}");
 
             GraphVisibility = Visibility.Visible;
 
+            EnableListView = true;
             return true;
         }
     }
