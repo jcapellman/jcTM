@@ -7,10 +7,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"      
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:views1="using:jcTM.UWP.Views"
-      Background="#015077"
       mc:Ignorable="d">
 
-    <Controls:HamburgerMenu x:Name="MyHamburgerMenu" NavAreaBackground="Black" HamburgerBackground="#015077" SecondarySeparator="White" HamburgerForeground="White" Background="#015077">
+    <Controls:HamburgerMenu x:Name="MyHamburgerMenu" Style="{StaticResource MainBurger}">
         <Controls:HamburgerMenu.PrimaryButtons>
             <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views1:MainPage">
                 <StackPanel Orientation="Horizontal">
@@ -27,26 +26,11 @@
                 </Controls:HamburgerButtonInfo.NavigationTransitionInfo>
                 <StackPanel Orientation="Horizontal">
                     <SymbolIcon Width="48" Height="48"
-                                Symbol="Setting" />
+                                Symbol="Folder" />
                     <TextBlock Margin="12,0,0,0" VerticalAlignment="Center"
                                Text="Day Overview Report" />
                 </StackPanel>
             </Controls:HamburgerButtonInfo>
         </Controls:HamburgerMenu.PrimaryButtons>
-
-        <Controls:HamburgerMenu.SecondaryButtons>
-            <Controls:HamburgerButtonInfo x:Name="SettingsButton" PageParameter="0"
-                                          PageType="views1:DayOverviewReport">
-                <Controls:HamburgerButtonInfo.NavigationTransitionInfo>
-                    <SuppressNavigationTransitionInfo />
-                </Controls:HamburgerButtonInfo.NavigationTransitionInfo>
-                <StackPanel Orientation="Horizontal">
-                    <SymbolIcon Width="48" Height="48"
-                                Symbol="Setting" />
-                    <TextBlock Margin="12,0,0,0" VerticalAlignment="Center"
-                               Text="Settings" />
-                </StackPanel>
-            </Controls:HamburgerButtonInfo>
-        </Controls:HamburgerMenu.SecondaryButtons>
     </Controls:HamburgerMenu>
 </Page>
