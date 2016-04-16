@@ -31,4 +31,24 @@
         <Setter Property="Foreground" Value="White" />
         <Setter Property="Margin" Value="0,0,10,0" />
     </Style>
+
+    <Style TargetType="TextBlock" x:Key="MainDashboardLabel">
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="Foreground" Value="#CCCCCC" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="MainDashboardValue">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="55" />
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+
+    <Style TargetType="ProgressBar" x:Key="MainProgress">
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="IsIndeterminate" Value="True" />
+    </Style>
 </ResourceDictionary>

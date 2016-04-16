@@ -17,7 +17,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <ProgressBar Grid.Row="0" IsIndeterminate="True" Visibility="{Binding ShowProgress, Mode=TwoWay}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        <ProgressBar Grid.Row="0" Style="{StaticResource MainProgress}" Visibility="{Binding ShowProgress, Mode=TwoWay}" />
 
         <Grid Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Grid.RowDefinitions>
@@ -40,11 +40,11 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Row="0" Grid.Column="0" FontSize="15" Foreground="#CCCCCC" FontWeight="Bold" Margin="0,0,20,0" Text="Low for Today" />
-                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="55" Foreground="White" Margin="0,0,20,0" Text="{Binding LowTemperature, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource MainDashboardLabel}" Margin="0,0,20,0" Text="Low for Today" />
+                <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource MainDashboardValue}" Margin="0,0,20,0" Text="{Binding LowTemperature, Mode=TwoWay}" />
 
-                <TextBlock Grid.Row="0" Grid.Column="1" FontSize="15" Foreground="#CCCCCC" FontWeight="Bold" Text="High for Today" />
-                <TextBlock Grid.Row="1" Grid.Column="1" FontSize="55" Foreground="White" Text="{Binding HighTemperature, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                <TextBlock Grid.Row="0" Grid.Column="1" Style="{StaticResource MainDashboardLabel}" Text="High for Today" />
+                <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource MainDashboardValue}" Text="{Binding HighTemperature, Mode=TwoWay}" />
             </Grid>
         </Grid>
     </Grid>
