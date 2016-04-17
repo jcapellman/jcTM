@@ -35,6 +35,8 @@ namespace jcTM.UWP.ViewModels {
         }
 
         public async Task<bool> LoadData() {
+            ShowProgress = Visibility.Visible;
+
             EnableListView = false;
 
             GraphVisibility = Visibility.Collapsed;
@@ -44,6 +46,8 @@ namespace jcTM.UWP.ViewModels {
             ListingItems = await temperatureHandler.GetDayOverviewListing();
 
             EnableListView = true;
+
+            ShowProgress = Visibility.Collapsed;
 
             return true;
         }
@@ -61,6 +65,8 @@ namespace jcTM.UWP.ViewModels {
         }
 
         public async Task<bool> LoadGraphData() {
+            ShowProgress = Visibility.Visible;
+
             EnableListView = false;
             
             var temperatureHandler = new TemperatureHandler();
@@ -70,6 +76,9 @@ namespace jcTM.UWP.ViewModels {
             GraphVisibility = Visibility.Visible;
 
             EnableListView = true;
+
+            ShowProgress = Visibility.Collapsed;
+
             return true;
         }
     }
