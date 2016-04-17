@@ -7,6 +7,7 @@ using jcTM.PCL.Transports;
 using jcTM.WebAPI.DataLayer.Entities;
 
 namespace jcTM.WebAPI.Controllers {
+    [RoutePrefix("api/DayOverviewReport")]
     public class DayOverviewReportController : ApiController {
         public List<DayOverviewListingResponseItem> GET() {
             using (var eFactory = new jctmEntities()) {
@@ -16,6 +17,7 @@ namespace jcTM.WebAPI.Controllers {
 
                 foreach (var item in result) {
                     var rItem = new DayOverviewListingResponseItem {
+                        ID = item.ID,
                         AvgTemp = Math.Round(item.AverageTemp, 0),
                         Day = item.Day,
                         MaxTemp = Math.Round(item.HighTemp, 0),
@@ -29,11 +31,11 @@ namespace jcTM.WebAPI.Controllers {
             }
         }
 
-        public List<DayOverviewDetailResponseItem> GET(DateTime selectedDay) {
+        public List<DayOverviewDetailResponseItem> GET(int selectedDayListingID) {
             using (var eFactory = new jctmEntities()) {
-                return eFactory.WEBAPI_getDayOverviewDetailSP(selectedDay).ToList().Select(a => new DayOverviewDetailResponseItem {
-                    AvgTemp = (int) (a.AvgTemp ?? 0),
-                    Hour = a.HourPart.Value
+                return eFactory.WEBAPI_getDayOverviewDetailSP(selectedDayListingID).ToList().Select(a => new DayOverviewDetailResponseItem {
+                    AvgTemp = a.AvgTemp,
+                    Hour = a.HourPart
                 }).ToList();
             }
         } 

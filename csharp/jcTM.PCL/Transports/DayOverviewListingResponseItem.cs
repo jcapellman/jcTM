@@ -5,6 +5,9 @@ namespace jcTM.PCL.Transports {
     [DataContract]
     public class DayOverviewListingResponseItem {
         [DataMember]
+        public int ID { get; set; }
+
+        [DataMember]
         public DateTime Day { get; set; }
 
         [DataMember]

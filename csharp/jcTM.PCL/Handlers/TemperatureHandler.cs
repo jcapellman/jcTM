@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
 using jcTM.PCL.Transports;
@@ -12,7 +11,7 @@ namespace jcTM.PCL.Handlers {
 
         public async Task<List<DayOverviewListingResponseItem>> GetDayOverviewListing() => await GET<List<DayOverviewListingResponseItem>>("DayOverviewReport");
 
-        public async Task<List<DayOverviewDetailResponseItem>> GetDayOverviewGraph(string dateTime) => 
-            await GET<List<DayOverviewDetailResponseItem>>($"DayOverviewReport?selectedDay={dateTime}");
+        public async Task<List<DayOverviewDetailResponseItem>> GetDayOverviewGraph(int selectedDayListingID) => 
+            await GET<List<DayOverviewDetailResponseItem>>($"DayOverviewReport?selectedDayListingID={selectedDayListingID}");
     }
 }
