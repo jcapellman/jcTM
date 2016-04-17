@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 
 using Windows.UI.Xaml;
-
+using jcTM.PCL.Handlers;
 using jcTM.PCL.Transports;
 
 namespace jcTM.UWP.ViewModels {
@@ -39,7 +39,9 @@ namespace jcTM.UWP.ViewModels {
         public async Task<bool> LoadData() {
             ShowProgress = Visibility.Visible;
 
-            var result = await GET<DashboardResponseItem>("Temperature");
+            var temperatureHandler = new TemperatureHandler();
+
+            var result = await temperatureHandler.GetDashboard();
 
             if (result == default(DashboardResponseItem)) {
                 return false;

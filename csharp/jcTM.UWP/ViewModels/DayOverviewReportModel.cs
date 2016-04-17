@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 
 using Windows.UI.Xaml;
 
+using jcTM.PCL.Handlers;
 using jcTM.PCL.Transports;
 
 namespace jcTM.UWP.ViewModels {
@@ -38,7 +39,9 @@ namespace jcTM.UWP.ViewModels {
 
             GraphVisibility = Visibility.Collapsed;
 
-            ListingItems = await GET<List<DayOverviewListingResponseItem>>("DayOverviewReport");
+            var temperatureHandler = new TemperatureHandler();
+
+            ListingItems = await temperatureHandler.GetDayOverviewListing();
 
             EnableListView = true;
 
@@ -62,7 +65,9 @@ namespace jcTM.UWP.ViewModels {
 
             var dateTime = $"{SelectedListItem.Day.Month}/{SelectedListItem.Day.Day}/{SelectedListItem.Day.Year}";
 
-            DetailGraphItems = await GET<List<DayOverviewDetailResponseItem>>($"DayOverviewReport?selectedDay={dateTime}");
+            var temperatureHandler = new TemperatureHandler();
+
+            DetailGraphItems = await temperatureHandler.GetDayOverviewGraph(dateTime);
 
             GraphVisibility = Visibility.Visible;
 
