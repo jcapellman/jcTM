@@ -31,17 +31,19 @@
 
         <TextBlock Grid.Row="1" Margin="10,10,10,10" HorizontalAlignment="Left" FontSize="25" Text="Day Overview Report" Foreground="White" FontWeight="Bold" />
 
-        <Charting:Chart Grid.Row="2" Visibility="{Binding GraphVisibility, Mode=TwoWay}" HorizontalAlignment="Stretch">
-            <Charting:Chart.LegendStyle>
-                <Style TargetType="dataVisualization:Legend">
-                    <Setter Property="Width" Value="0" />
-                </Style>
-            </Charting:Chart.LegendStyle>
-            
-            <Charting:LineSeries ItemsSource="{Binding DetailGraphItems}"  IndependentValuePath="Hour" DependentValuePath="AvgTemp" IsSelectionEnabled="True" />
-        </Charting:Chart>
+        <ScrollViewer Grid.Row="2" ZoomMode="Enabled" Visibility="{Binding GraphVisibility, Mode=TwoWay}" HorizontalScrollMode="Enabled" VerticalScrollMode="Enabled" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <Charting:Chart HorizontalContentAlignment="Stretch" Margin="10,0,10,0">
+                <Charting:Chart.LegendStyle>
+                    <Style TargetType="dataVisualization:Legend">
+                        <Setter Property="Width" Value="0" />
+                    </Style>
+                </Charting:Chart.LegendStyle>
 
-        <ListView Grid.Row="2" ItemsSource="{Binding ListingItems}" IsEnabled="{Binding EnableListView, Mode=TwoWay}" SelectedItem="{Binding SelectedListItem, Mode=TwoWay}" SelectionChanged="lstItems_SelectionChanged">
+                <Charting:LineSeries ItemsSource="{Binding DetailGraphItems}"  IndependentValuePath="Hour" DependentValuePath="AvgTemp" IsSelectionEnabled="True" />
+            </Charting:Chart>
+        </ScrollViewer>
+        
+        <ListView Grid.Row="3" ItemsSource="{Binding ListingItems}" IsEnabled="{Binding EnableListView, Mode=TwoWay}" SelectedItem="{Binding SelectedListItem, Mode=TwoWay}" SelectionChanged="lstItems_SelectionChanged">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
