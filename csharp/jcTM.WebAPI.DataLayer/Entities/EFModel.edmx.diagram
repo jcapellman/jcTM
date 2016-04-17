@@ -5,7 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="50e97e9c7972445088c8fadf85ec962b" Name="Diagram1">
-        <EntityTypeShape EntityType="jctmModel.Temperature" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

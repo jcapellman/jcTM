@@ -62,12 +62,10 @@ namespace jcTM.UWP.ViewModels {
 
         public async Task<bool> LoadGraphData() {
             EnableListView = false;
-
-            var dateTime = $"{SelectedListItem.Day.Month}/{SelectedListItem.Day.Day}/{SelectedListItem.Day.Year}";
-
+            
             var temperatureHandler = new TemperatureHandler();
 
-            DetailGraphItems = await temperatureHandler.GetDayOverviewGraph(dateTime);
+            DetailGraphItems = await temperatureHandler.GetDayOverviewGraph(SelectedListItem.ID);
 
             GraphVisibility = Visibility.Visible;
 

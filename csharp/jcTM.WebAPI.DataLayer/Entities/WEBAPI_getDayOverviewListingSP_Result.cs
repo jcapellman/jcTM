@@ -17,5 +17,6 @@ namespace jcTM.WebAPI.DataLayer.Entities
         public double LowTemp { get; set; }
         public double HighTemp { get; set; }
         public double AverageTemp { get; set; }
+        public int ID { get; set; }
     }
 }

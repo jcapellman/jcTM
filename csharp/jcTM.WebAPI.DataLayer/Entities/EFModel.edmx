@@ -16,7 +16,7 @@
           <Property Name="Temperature" Type="float" Nullable="false" />
         </EntityType>
         <Function Name="WEBAPI_getDayOverviewDetailSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="SelectedDay" Type="datetime" Mode="In" />
+          <Parameter Name="SelectedDayListingID" Type="int" Mode="In" />
         </Function>
         <Function Name="WEBAPI_getDayOverviewListingSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="WEBAPI_getLatestTemperatureSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -42,7 +42,7 @@
           <FunctionImport Name="WEBAPI_getLatestTemperatureSP" ReturnType="Collection(jctmModel.WEBAPI_getLatestTemperatureSP_Result)" />
           <FunctionImport Name="WEBAPI_getDayOverviewListingSP" ReturnType="Collection(jctmModel.WEBAPI_getDayOverviewListingSP_Result)" />
           <FunctionImport Name="WEBAPI_getDayOverviewDetailSP" ReturnType="Collection(jctmModel.WEBAPI_getDayOverviewDetailSP_Result)">
-            <Parameter Name="SelectedDay" Mode="In" Type="DateTime" />
+          <Parameter Name="SelectedDayListingID" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="WEBAPI_getLatestTemperatureSP_Result">
@@ -56,10 +56,11 @@
           <Property Type="Double" Name="LowTemp" Nullable="false" />
           <Property Type="Double" Name="HighTemp" Nullable="false" />
           <Property Type="Double" Name="AverageTemp" Nullable="false" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
         </ComplexType>
         <ComplexType Name="WEBAPI_getDayOverviewDetailSP_Result">
-          <Property Type="Int32" Name="HourPart" Nullable="true" />
-          <Property Type="Double" Name="AvgTemp" Nullable="true" />
+          <Property Type="Int32" Name="HourPart" Nullable="false" />
+          <Property Type="Int32" Name="AvgTemp" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -95,6 +96,7 @@
                 <ScalarProperty Name="LowTemp" ColumnName="LowTemp" />
                 <ScalarProperty Name="HighTemp" ColumnName="HighTemp" />
                 <ScalarProperty Name="AverageTemp" ColumnName="AverageTemp" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

@@ -13,7 +13,7 @@ namespace jcTM.WebAPI.DataLayer.Entities
     
     public partial class WEBAPI_getDayOverviewDetailSP_Result
     {
-        public Nullable<int> HourPart { get; set; }
-        public Nullable<double> AvgTemp { get; set; }
+        public int HourPart { get; set; }
+        public int AvgTemp { get; set; }
     }
 }

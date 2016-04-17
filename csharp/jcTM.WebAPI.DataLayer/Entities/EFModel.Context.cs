@@ -39,13 +39,13 @@ namespace jcTM.WebAPI.DataLayer.Entities
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WEBAPI_getDayOverviewListingSP_Result>("WEBAPI_getDayOverviewListingSP");
         }
     
-        public virtual ObjectResult<WEBAPI_getDayOverviewDetailSP_Result> WEBAPI_getDayOverviewDetailSP(Nullable<System.DateTime> selectedDay)
+        public virtual ObjectResult<WEBAPI_getDayOverviewDetailSP_Result> WEBAPI_getDayOverviewDetailSP(Nullable<int> selectedDayListingID)
         {
-            var selectedDayParameter = selectedDay.HasValue ?
-                new ObjectParameter("SelectedDay", selectedDay) :
-                new ObjectParameter("SelectedDay", typeof(System.DateTime));
+            var selectedDayListingIDParameter = selectedDayListingID.HasValue ?
+                new ObjectParameter("SelectedDayListingID", selectedDayListingID) :
+                new ObjectParameter("SelectedDayListingID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WEBAPI_getDayOverviewDetailSP_Result>("WEBAPI_getDayOverviewDetailSP", selectedDayParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WEBAPI_getDayOverviewDetailSP_Result>("WEBAPI_getDayOverviewDetailSP", selectedDayListingIDParameter);
         }
     }
 }
