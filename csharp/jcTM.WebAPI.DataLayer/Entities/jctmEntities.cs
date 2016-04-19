@@ -6,6 +6,10 @@ namespace jcTM.WebAPI.DataLayer.Entities {
         public override int SaveChanges() {
             foreach (var item in ChangeTracker.Entries()) {
                 switch (item.State) {
+                    case EntityState.Deleted:
+                        item.Property("Active").CurrentValue = false;
+                        item.State = EntityState.Modified;
+                        break;
                     case EntityState.Unchanged:
                         continue;
                     case EntityState.Added:
