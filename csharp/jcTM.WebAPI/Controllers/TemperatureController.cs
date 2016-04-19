@@ -9,10 +9,7 @@ namespace jcTM.WebAPI.Controllers {
         public void GET(double temperature) {
             using (var eFactory = new jctmEntities()) {
                 var temp = eFactory.Temperatures.Create();
-
-                temp.Active = true;
-                temp.Created = DateTime.Now;
-                temp.Modified = DateTime.Now;
+                
                 temp.Temperature1 = temperature;
 
                 eFactory.Temperatures.Add(temp);
