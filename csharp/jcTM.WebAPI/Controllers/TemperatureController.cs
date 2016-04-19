@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Linq;
-using System.Web.Http;
 
 using jcTM.PCL.Transports;
 using jcTM.WebAPI.DataLayer.Entities;
 
 namespace jcTM.WebAPI.Controllers {
-    [System.Web.Mvc.RoutePrefix("api/Temperature")]
-    public class TemperatureController : ApiController {
+    public class TemperatureController : BaseController {
         public void GET(double temperature) {
             using (var eFactory = new jctmEntities()) {
                 var temp = eFactory.Temperatures.Create();

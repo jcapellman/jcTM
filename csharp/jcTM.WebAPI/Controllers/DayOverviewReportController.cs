@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web.Http;
 
 using jcTM.PCL.Transports;
 using jcTM.WebAPI.DataLayer.Entities;
 
 namespace jcTM.WebAPI.Controllers {
-    [RoutePrefix("api/DayOverviewReport")]
-    public class DayOverviewReportController : ApiController {
+    public class DayOverviewReportController : BaseController {
         public List<DayOverviewListingResponseItem> GET() {
             using (var eFactory = new jctmEntities()) {
                 var result = eFactory.WEBAPI_getDayOverviewListingSP().ToList();
