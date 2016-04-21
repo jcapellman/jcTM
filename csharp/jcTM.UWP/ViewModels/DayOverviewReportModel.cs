@@ -41,9 +41,9 @@ namespace jcTM.UWP.ViewModels {
 
             GraphVisibility = Visibility.Collapsed;
 
-            var temperatureHandler = new TemperatureHandler();
+            var dayOverviewHandler = new DayOverviewReportHandler();
 
-            ListingItems = await temperatureHandler.GetDayOverviewListing();
+            ListingItems = await dayOverviewHandler.GetDayOverviewListing();
 
             EnableListView = true;
 
@@ -69,9 +69,9 @@ namespace jcTM.UWP.ViewModels {
 
             EnableListView = false;
             
-            var temperatureHandler = new TemperatureHandler();
+            var dayOverviewHandler = new DayOverviewReportHandler();
 
-            DetailGraphItems = await temperatureHandler.GetDayOverviewGraph(SelectedListItem.ID);
+            DetailGraphItems = await dayOverviewHandler.GetDayOverviewGraph(SelectedListItem.ID);
 
             GraphVisibility = Visibility.Visible;
 

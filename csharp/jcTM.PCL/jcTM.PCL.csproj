@@ -36,6 +36,7 @@
   <ItemGroup>
     <Compile Include="Global\Constants.cs" />
     <Compile Include="Handlers\BaseHandler.cs" />
+    <Compile Include="Handlers\DayOverviewReportHandler.cs" />
     <Compile Include="Handlers\TemperatureHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Transports\DashboardResponseItem.cs" />

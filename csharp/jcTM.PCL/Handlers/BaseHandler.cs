@@ -7,19 +7,25 @@ using jcTM.PCL.Global;
 using Newtonsoft.Json;
 
 namespace jcTM.PCL.Handlers {
-    public class BaseHandler {
-        protected async Task<T> GET<T>(string urlArguments) {
+    public abstract class BaseHandler {
+        protected abstract string BaseControllerName();
+
+        private HttpClient GetHttpClient() {
             var handler = new HttpClientHandler();
-            var client = new HttpClient(handler) { Timeout = TimeSpan.FromMinutes(1) };
-            var str = await client.GetStringAsync($"{Constants.WEBAPI_ADDRESS}{urlArguments}");
+
+            return new HttpClient(handler) { Timeout = TimeSpan.FromMinutes(1) };
+        }
+
+        private string generateURL(string arguments) => string.IsNullOrEmpty(arguments) ? $"{Constants.WEBAPI_ADDRESS}{BaseControllerName()}" : $"{Constants.WEBAPI_ADDRESS}{BaseControllerName()}?{arguments}";
+
+        protected async Task<T> GET<T>(string urlArguments) {
+            var str = await GetHttpClient().GetStringAsync(generateURL(urlArguments));
 
             return JsonConvert.DeserializeObject<T>(str);
         }
 
         protected async void GET(string urlArguments) {
-            var handler = new HttpClientHandler();
-            var client = new HttpClient(handler) { Timeout = TimeSpan.FromMinutes(1) };
-            await client.GetStringAsync($"{Constants.WEBAPI_ADDRESS}{urlArguments}");
+            await GetHttpClient().GetStringAsync(generateURL(urlArguments));
         }
     }
 }
