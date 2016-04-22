@@ -15,5 +15,8 @@ namespace jcTM.PCL.Transports {
 
         [DataMember]
         public double CurrentDay_LowTemperature { get; set; }
+
+        [DataMember]
+        public double Latest_HumidityPercentage { get; set; }
     }
 }

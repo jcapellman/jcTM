@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 
 using Windows.UI.Xaml;
+
 using jcTM.PCL.Handlers;
 using jcTM.PCL.Transports;
 
@@ -20,6 +21,10 @@ namespace jcTM.UWP.ViewModels {
             get { return _temperature; }
             set { _temperature = value; OnPropertyChanged(); }
         }
+
+        private double _humdity;
+
+        public double Humidity { get { return _humdity; } set { _humdity = value; OnPropertyChanged(); } }
 
         private double _lowTemperature;
 
@@ -51,6 +56,7 @@ namespace jcTM.UWP.ViewModels {
             Temperature = $"{Math.Round(result.Latest_Temperature, 2)}'F";
             HighTemperature = result.CurrentDay_HighTemperature;
             LowTemperature = result.CurrentDay_LowTemperature;
+            Humidity = result.Latest_HumidityPercentage;
 
             ShowProgress = Visibility.Collapsed;
             
