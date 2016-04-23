@@ -28,6 +28,7 @@ namespace jcTM.WebAPI.DataLayer.Entities
         }
     
         public virtual DbSet<Temperature> Temperatures { get; set; }
+        public virtual DbSet<Humidity> Humidities { get; set; }
     
         public virtual ObjectResult<WEBAPI_getLatestTemperatureSP_Result> WEBAPI_getLatestTemperatureSP()
         {

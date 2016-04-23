@@ -51,6 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Humidity.cs">
+      <DependentUpon>EFModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\jctmEntities.cs" />
     <Compile Include="Entities\EFModel.Context.cs">
       <AutoGen>True</AutoGen>

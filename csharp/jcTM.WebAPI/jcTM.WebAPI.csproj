@@ -145,6 +145,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DayOverviewReportController.cs" />
+    <Compile Include="Controllers\HumidityController.cs" />
     <Compile Include="Controllers\NightlyJobController.cs" />
     <Compile Include="Controllers\TemperatureController.cs" />
     <Compile Include="Global.asax.cs">
