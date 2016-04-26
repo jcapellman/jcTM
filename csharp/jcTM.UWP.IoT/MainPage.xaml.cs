@@ -36,9 +36,7 @@ namespace jcTM.UWP.IoT {
 
                     humidityHandler.RecordHumidity(response.Humidity);
                 }
-
-
-                DeviceFactory.Build.
+                
                 await System.Threading.Tasks.Task.Delay(5000);
             }
         }
