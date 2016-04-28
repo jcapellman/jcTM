@@ -23,7 +23,7 @@ namespace jcTM.WebAPI.Controllers {
                     };
                     
                     response.Add(rItem);
-                }
+                }xxxxxxx
 
                 return response;
             }
