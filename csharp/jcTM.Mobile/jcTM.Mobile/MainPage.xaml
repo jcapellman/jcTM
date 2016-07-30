@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="jcTM.Mobile.MainPage">
+  <Grid Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <Label x:Name="lTemperature" Grid.Row="0" FontSize="60" TextColor="White" Text="{Binding Temperature}" HorizontalOptions="Center" />
+    <Label x:Name="lRecordedTime" Grid.Row="1" FontSize="20" TextColor="#CCCCCC" Text="{Binding RecordedTime}" HorizontalOptions="Center" />
+
+    <Grid Grid.Row="2" Padding="0,20,0,0" HorizontalOptions="Center">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="Auto" />
+      </Grid.ColumnDefinitions>
+
+      <Label Grid.Row="0" Grid.Column="0" Text="Low for Today" />
+      <Label x:Name="lLowTemperature" Grid.Row="1" Grid.Column="0" Text="{Binding LowTemperature}" />
+
+      <Label Grid.Row="0" Grid.Column="1" Text="High for Today" />
+      <Label x:Name="lHighTemperature" Grid.Row="1" Grid.Column="1" Text="{Binding HighTemperature}" />
+    </Grid>
+  </Grid>
+</ContentPage>
