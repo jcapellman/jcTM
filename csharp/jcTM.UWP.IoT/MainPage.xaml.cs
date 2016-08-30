@@ -1,7 +1,11 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿using System;
+
+using Windows.UI.Xaml.Controls;
 
 using jcTM.PCL.Handlers;
 using jcTM.UWP.IoT.Sensors;
+
+using Microsoft.Azure.Devices.Client;
 
 namespace jcTM.UWP.IoT {
 
@@ -17,9 +21,17 @@ namespace jcTM.UWP.IoT {
 
             var temperatureSensor = new DHT11Sensor();
 
+            var _deviceClient = DeviceClient.CreateFromConnectionString("iottemp.azure-devices.net", TransportType.Http1);
+            
             while (true) {
-                tempHandler.RecordTemperature(temperatureSensor.GetTemperature(false));    
-                
+                var receivedMessage = await _deviceClient.ReceiveAsync();
+
+                if (receivedMessage != null) {
+                    await _deviceClient.CompleteAsync(receivedMessage);
+                }
+
+                tempHandler.RecordTemperature(temperatureSensor.GetTemperature(false));
+
                 await System.Threading.Tasks.Task.Delay(5000);
             }
         }

@@ -19,6 +19,7 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "jcTM.Mobile", "jcTM.Mobile\
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		jcTM.Mobile\jcTM.Mobile\jcTM.Mobile.projitems*{615d7428-670a-48b2-a6d5-7ba4c7da11bb}*SharedItemsImports = 4
 		jcTM.Mobile\jcTM.Mobile\jcTM.Mobile.projitems*{cf53f8e7-ea88-4b45-b232-3b6305c15213}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -288,6 +289,8 @@ Global
 		{C841BC0F-6D8E-409E-AF7A-73A9E76F4346}.AppStore|x86.Deploy.0 = Release|x86
 		{C841BC0F-6D8E-409E-AF7A-73A9E76F4346}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{C841BC0F-6D8E-409E-AF7A-73A9E76F4346}.Debug|ARM.ActiveCfg = Debug|ARM
+		{C841BC0F-6D8E-409E-AF7A-73A9E76F4346}.Debug|ARM.Build.0 = Debug|ARM
+		{C841BC0F-6D8E-409E-AF7A-73A9E76F4346}.Debug|ARM.Deploy.0 = Debug|ARM
 		{C841BC0F-6D8E-409E-AF7A-73A9E76F4346}.Debug|iPhone.ActiveCfg = Debug|x86
 		{C841BC0F-6D8E-409E-AF7A-73A9E76F4346}.Debug|iPhoneSimulator.ActiveCfg = Debug|x86
 		{C841BC0F-6D8E-409E-AF7A-73A9E76F4346}.Debug|x64.ActiveCfg = Debug|x64
@@ -349,7 +352,6 @@ Global
 		{615D7428-670A-48B2-A6D5-7BA4C7DA11BB}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{615D7428-670A-48B2-A6D5-7BA4C7DA11BB}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{615D7428-670A-48B2-A6D5-7BA4C7DA11BB}.Debug|ARM.Build.0 = Debug|Any CPU
-		{615D7428-670A-48B2-A6D5-7BA4C7DA11BB}.Debug|ARM.Deploy.0 = Debug|Any CPU
 		{615D7428-670A-48B2-A6D5-7BA4C7DA11BB}.Debug|iPhone.ActiveCfg = Debug|Any CPU
 		{615D7428-670A-48B2-A6D5-7BA4C7DA11BB}.Debug|iPhone.Build.0 = Debug|Any CPU
 		{615D7428-670A-48B2-A6D5-7BA4C7DA11BB}.Debug|iPhone.Deploy.0 = Debug|Any CPU
